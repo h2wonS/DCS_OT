@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 	proc = (struct prinfo*)malloc(size * sizeof(struct prinfo));
 	re = syscall(548, proc, &size);
 	//printf("# of total process: %d\n", re);
-	if(re != size) 
+	if(re <0) 
 		perror("syscall ptree error");
 	
 	for(i=0; i<re; i++){

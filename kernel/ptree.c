@@ -91,7 +91,9 @@ SYSCALL_DEFINE2(ptree, struct prinfo *, buf, int *, nr){
 
 	kbuf += remain_size;
 	ubuf += remain_size;
-
+	
+	val = proc_num;
+	
 	while(1){
 		ubuf -= remain_size;
 		kbuf -= remain_size;
@@ -99,9 +101,6 @@ SYSCALL_DEFINE2(ptree, struct prinfo *, buf, int *, nr){
 		if(remain_size<=0)
 			break;
 	}
-
-	if(remain_size<0)
-		val = remain_size;
 
 	if((error=put_user(list_size, nr))<0)
 		val = error;

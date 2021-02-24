@@ -34,16 +34,12 @@ int main(int argc, char* argv[]) {
 	int stack[size];
 	int p=0;
 	
-	while(1){		
-		proc = (struct prinfo*)malloc(size * sizeof(struct prinfo));
-		re = syscall(548, proc, &size);
-		if(re == size) 
-			break;
-		size = re + 10;
-		free(proc);
-	}
+	proc = (struct prinfo*)malloc(size * sizeof(struct prinfo));
+	re = syscall(548, proc, &size);
+	//printf("# of total process: %d\n", re);
+	if(re != size) 
+		perror("syscall ptree error");
 	
-
 	for(i=0; i<re; i++){
 		
 		print_ptree(proc, i, tab);

@@ -88,7 +88,6 @@ SYSCALL_DEFINE2(ptree, struct prinfo *, buf, int *, nr){
 
 	ubuf = buf;
 	remain_size = list_size*sizeof(struct prinfo);
-	val = proc_num;
 
 	kbuf += remain_size;
 	ubuf += remain_size;
